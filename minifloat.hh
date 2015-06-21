@@ -60,6 +60,7 @@ minifloat::minifloat() {}
 
 inline
 minifloat::minifloat(float f) {
+    /* TODO */
     uif x;
     x.f = f;
 
@@ -72,7 +73,7 @@ minifloat::minifloat(float f) {
 
         if (e) {
             unsigned char m =  _m & 0b00000111;
-            _m = e + ((m + 0);
+            _m = e + (m + 0);
         } else {
             /* TODO create convert function */
         }
