@@ -1,7 +1,7 @@
-test_minifloat: test.c
+test_minifloat: test.cpp
 	$(CXX) -std=c++11 $< -o $@
 
-debug_minifloat: test.c
+debug_minifloat: test.cpp
 	$(CXX) -fsanitize=address -ggdb $< -o $@
 
 test: test_minifloat
