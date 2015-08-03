@@ -143,4 +143,10 @@ TEST_CASE( "Test values", "[minifloat]") {
         }
     }
     */
+
+    SECTION( "Write minifloat numbers to stdout" ) {
+        minifloat m = 1;
+        std::cout << m << std::endl;
+    }
+
 }

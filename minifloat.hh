@@ -1,6 +1,8 @@
 #ifndef MINIFLOAT_HH
 #define MINIFLOAT_HH
 
+#include <iostream>
+
 class minifloat
 {
   public:
@@ -45,15 +47,26 @@ class minifloat
     union uif {
       unsigned char i:8;
       float f;
-    }; 
+    };
 
   private:
     unsigned char _m;
 };
 
 
-std::ostream& operator << (std::ostream &os, minifloat m);
-std::istream& operator >> (std::istream &is, minifloat &m);
+std::ostream&
+operator << (std::ostream &os, minifloat m) {
+    os << float(m);
+    return os;
+}
+
+std::istream&
+operator >> (std::istream &is, minifloat &m) {
+    float f;
+    is >> f;
+    m = minifloat(f);
+    return is;
+}
 
 inline
 minifloat::minifloat() {}
@@ -91,6 +104,7 @@ inline minifloat
 minifloat::operator- () const {
     minifloat m;
     m._m = _m ^ 0b1000000;
+    return m;
 }
 
 
@@ -224,7 +238,7 @@ minifloat::isInfinity () const
 }
 
 
-inline bool 
+inline bool
 minifloat::isNegative () const
 {
     return (_m & 0b10000000) != 0;
